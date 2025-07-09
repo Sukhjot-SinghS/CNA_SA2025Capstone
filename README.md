@@ -1,7 +1,7 @@
 # 🚗 Dynamic Parking Pricing – Real-Time AI with Pathway
 Welcome to the Dynamic Parking Pricing repository!
 This project delivers robust, real-time parking price optimization using live data streams, interpretable models, and modern dashboards—all powered by the Pathway AI simulation engine.
-# LIVE PLOTTING (not Static graphs)
+## LIVE Plotting (not Static graphs)
 # ✨ Features at a Glance
 Live Data Streaming: Real-time ingestion and processing of parking lot data.
 
@@ -22,7 +22,7 @@ Extensible & Production-Ready: Easy to adapt, scale, and deploy.
 
 
 # 📚 Project Workflow
-### 1. Data Preparation
+## 1. Data Preparation
 Load parking data from CSV or real-time feed.
 
 Ensure all columns are present; fill defaults if missing.
@@ -31,30 +31,39 @@ Combine date and time to a single timestamp.
 
 Sort by lot and timestamp for streaming.
 
-### 2. Pathway Streaming Pipeline
+## 2. Pathway Streaming Pipeline
 Define schema for all features.
 
 Stream data using Pathway’s replay or real-time connectors.
 
-### 3. Model 1: Baseline Linear Pricing
+## 3. Model 1: Baseline Linear Pricing
+I have got another file here as well which is named dashboard.py , you have to run that file on your terminal....
+its formula is more complex than the below given ,it uses 
+### Price(t) = Price(t-1) + α × (Occupancy / Capacity)
+and starts the day from 
+### Price = BasePrice + α × (Occupancy / Capacity)
+To Run it paste this on your terminal (you need to save the file at the location given in terminal mine was --->> C:\Users\Lenovo> )
+
+```panel serve dashboard.py```
+
 Formula:
-#### Price = BasePrice + α × (Occupancy / Capacity)
+### Price = BasePrice + α × (Occupancy / Capacity)
 
 Stateless, interpretable, and robust.
 
 Output: price per lot, per timepoint.
 
-### 4. Model 2: Demand-Based Dynamic Pricing
-#### Demand Function:
-#### Demand = α × (Occupancy / Capacity) + β × QueueLength - γ × TrafficLevel + δ × IsSpecialDay + ε × VehicleTypeWeight
+## 4. Model 2: Demand-Based Dynamic Pricing
+### Demand Function:
+### Demand = α × (Occupancy / Capacity) + β × QueueLength - γ × TrafficLevel + δ × IsSpecialDay + ε × VehicleTypeWeight
 
-#### Price Calculation:
-#### NormDemand = clip((Demand - 0.5)/3, 0, 1)
-#### Price = BasePrice × (1 + λ × NormDemand) (clamped between 0.5x and 2x base price)
+### Price Calculation:
+### NormDemand = clip((Demand - 0.5)/3, 0, 1)
+### Price = BasePrice × (1 + λ × NormDemand) (clamped between 0.5x and 2x base price)
 
 Fully interpretable and streaming-safe.
 
-### 5. Live Visualization
+## 5. Live Visualization
 Panel+Bokeh dashboards for each lot (up to 14, each with a unique color).
 
 Hover tooltips for all features and computed price.
