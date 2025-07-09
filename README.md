@@ -1,7 +1,7 @@
 # 🚗 Dynamic Parking Pricing – Real-Time AI with Pathway
 Welcome to the Dynamic Parking Pricing repository!
 This project delivers robust, real-time parking price optimization using live data streams, interpretable models, and modern dashboards—all powered by the Pathway AI simulation engine.
-
+# LIVE PLOTTING (not Static graphs)
 # ✨ Features at a Glance
 Live Data Streaming: Real-time ingestion and processing of parking lot data.
 
